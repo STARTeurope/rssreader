@@ -2,7 +2,7 @@ Python + GAE RSSReader
 =============
 
 Simple Python RSSReader developed to display our RSS Blog Feeds as Tab App within Facebook.
-
+Check it out live: https://www.facebook.com/startupweek/app_375173389168373
 
 Setup / Installation:
 -------------------
@@ -25,16 +25,18 @@ What to change:
 
 ### index.html
 change the layout, add css classes, ...
-    * item.title #the title
-    * item.link #the link to blog entry
-    * item.pubDate #publish date of entry
-    * item.description #the excerpt / short description
-    * item.content #the whole content
-    * item.img #url of first image in content
+    item.title #the title
+    item.link #the link to blog entry
+    item.pubDate #publish date of entry
+    item.description #the excerpt / short description
+    item.content #the whole content
+    item.img #url of first image in content
 
 ### style.css
 add your css to style your index.html
 
+
+Check out this App live at: https://www.facebook.com/startupweek/app_375173389168373
 
 Credits:
 --------
