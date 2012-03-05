@@ -33,12 +33,11 @@
 <body>
 	<div id="wrapper">
 		
-		<h2>NEWS, INSIGHTS, AND STARTUP LOVE</h2>
-		<h1>ROLLING WITH THE PIONEERS</h1>
+		<h1>headline</h1>
 
 	    {% for item in items %}
 	    	<h3><a href="{{item.link}}">{{item.title}}</a></h3>
-	    	<span class="pubdate">{{item.pubDate}}</span>
+	    	<span>{{item.pubDate}}</span>
 	    	<p>{{item.description}}</p>
 	    {% endfor %}
 	</div>

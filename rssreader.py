@@ -13,21 +13,13 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.di
 
 class IndexPage(webapp2.RequestHandler):
 	def get(self):
-		
-		rss_reader = RSSReader('http://feeds.feedburner.com/PioneersFestival?format=xml')
-		items = rss_reader.GetItems()
-		
-		template_values = {
-			"items": items
-		}
-
-		template = jinja_environment.get_template('templates/index.html')
-
-		self.response.out.write(template.render(template_values))
+		self.response.out.write(self.init())
 	
 	def post(self):
-		
-		rss_reader = RSSReader('https://feeds.feedburner.com/PioneersFestival?format=xml')
+		self.response.out.write(self.init())
+	
+	def init(self):
+		rss_reader = RSSReader('http://feeds.feedburner.com/PioneersFestival?format=xml') #add feed url to RSS Reader - tested with feedburner
 		items = rss_reader.GetItems()
 		
 		template_values = {
@@ -36,7 +28,7 @@ class IndexPage(webapp2.RequestHandler):
 
 		template = jinja_environment.get_template('templates/index.html')
 
-		self.response.out.write(template.render(template_values))
+		return template.render(template_values)
 
 
 class RSSItem:
@@ -93,10 +85,6 @@ class RSSReader:
 			print "Error Getting URL"
 		return xmldoc
 	
-	def CreateRSSItem(self,item_node):
-		"""Create an RSS item and return it"""
-		self.items.append(RSSItem(item_node))
-	
 	def GetItems(self):
 		"""Generator to get items"""
 		for item_node in self.xmldoc.documentElement.childNodes:
@@ -104,7 +92,8 @@ class RSSReader:
 				for child_node in item_node.childNodes:
 					if (child_node.nodeName == "item"):
 						"""Allright we have an item"""
-						rss_item = self.CreateRSSItem(child_node)
+						rss_item = RSSItem(child_node)
+						self.items.append(rss_item)
 		return self.items
 
 
