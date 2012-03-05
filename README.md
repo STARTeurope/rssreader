@@ -26,10 +26,15 @@ What to change:
 ### index.html
 change the layout, add css classes, ...
     item.title #the title
+    
     item.link #the link to blog entry
+    
     item.pubDate #publish date of entry
+    
     item.description #the excerpt / short description
+    
     item.content #the whole content
+    
     item.img #url of first image in content
 
 ### style.css
