@@ -11,3 +11,13 @@
 h1, h2, h3 {
 	margin: 30px 0 0px;
 }
+
+.imgcont {
+	position:relative;
+	width:725px;
+	height:200px;
+	background-position-x:center;
+	background-position-y:center;
+	margin: 20px auto 10px;
+	display: block;
+}

@@ -36,8 +36,10 @@ class RSSItem:
 	def __init__(self,item_node):
 		self.title = self.GetChildText(item_node,"title")
 		self.link = self.GetChildText(item_node, "link")
-		self.pubDate = self.GetChildText(item_node, "pubDate")
+		self.pubDate = self.GetChildText(item_node, "pubDate")[0:16]
 		self.description = self.GetChildText(item_node,"description")
+		self.content = self.GetChildText(item_node,"content:encoded")
+		self.img = self.FindIMG(self.content)
 
 	
 	def GetItemText(self,xml_node):
@@ -58,10 +60,22 @@ class RSSItem:
 			return ""
 		for item_node in xml_node.childNodes:
 			if (item_node.nodeName==child_name):
-				logging.info("++++ founded " + child_name)
 				return self.GetItemText(item_node)
 		"""Return Nothing"""
 		return ""
+
+	def FindIMG(self, content):
+		"""find first image in content and extract src"""
+		if (content):
+			pos = string.find(content, "<img")
+			tmp = content[pos:len(content)]
+			posend = string.find(tmp, ">")
+			tmp = tmp[0:posend]
+			pos = string.find(tmp, "src=")
+			tmp = tmp[pos:len(tmp)]
+			posend = string.find(tmp, " ")
+			tmp = tmp[0:posend]
+			return tmp[5:len(tmp)-1]
 
 class RSSReader:
 	"""This class is an RSS reader, it should have a better docstring"""
