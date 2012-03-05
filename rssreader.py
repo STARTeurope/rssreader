@@ -19,7 +19,7 @@ class IndexPage(webapp2.RequestHandler):
 		self.response.out.write(self.init())
 	
 	def init(self):
-		rss_reader = RSSReader('http://feeds.feedburner.com/PioneersFestival?format=xml') #add feed url to RSS Reader - tested with feedburner
+		rss_reader = RSSReader('http://feeds.feedburner.com/[FeedBurner_Projekt_Name]?format=xml') #add feed url to RSS Reader - tested with feedburner
 		items = rss_reader.GetItems()
 		
 		template_values = {
