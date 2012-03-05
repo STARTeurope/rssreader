@@ -25,6 +25,7 @@ What to change:
 
 ### index.html
 change the layout, add css classes, ...
+    
     item.title #the title
     
     item.link #the link to blog entry
